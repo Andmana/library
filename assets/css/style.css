@@ -84,7 +84,7 @@ button {
 /* Edge layer */
 .button {
     padding: 5px 16px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     font-weight: 550;
     background-color: white;
@@ -104,6 +104,7 @@ button {
 .icons {
     width: 40px;
     height: 40px;
+    fill: #ef4444da;
 }
 
 /************/
@@ -184,7 +185,7 @@ main {
 
 .black {
     background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
 }
 
@@ -213,4 +214,63 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+dialog {
+    animation: fade-out 0.7s ease-out;
+    position: relative;
+    width: 30%;
+    margin: auto;
+    padding: 20px 40px;
+    border-radius: 30px;
+    border: 2px solid #334155;
+}
+
+body,
+button {
+    font-family: system-ui;
+}
+
+.form-group {
+    margin: 15px 0px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    display: flex;
+}
+
+label span {
+    flex: 1;
+}
+
+.form-group input {
+    padding: 5px 15px 4px;
+    border-radius: 5px;
+    background-color: #e0e0e091;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+input[type="number"] {
+    text-align: end;
+}
+
+.form-group input:not(:placeholder-shown),
+.form-group input:focus {
+    background-color: white;
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
 }

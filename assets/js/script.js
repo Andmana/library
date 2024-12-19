@@ -7,8 +7,11 @@ const pages = 1000;
 const isRead = false;
 
 const container = document.querySelector(".container");
-const addBook = document.getElementById("Add");
+const show_dialog = document.getElementById("Add");
 const removeSvg = document.getElementById("TemplateSVG");
+
+const dialog = document.querySelector("dialog");
+const close_dialog = document.querySelector(".close");
 
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -18,6 +21,7 @@ function Book(title, author, pages, isRead) {
 }
 
 function addBookToLibrary() {
+    // dialog.showModal();
     const newBook = new Book(title, author, pages, isRead);
     myLibrary.push(newBook);
     show();
@@ -59,6 +63,11 @@ function show() {
     });
 }
 
-addBook.addEventListener("click", () => {
-    addBookToLibrary();
+show_dialog.addEventListener("click", () => {
+    // addBookToLibrary();
+    dialog.showModal();
+});
+
+close_dialog.addEventListener("click", () => {
+    dialog.close();
 });
