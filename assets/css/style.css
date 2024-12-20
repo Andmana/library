@@ -105,6 +105,12 @@ button {
     width: 40px;
     height: 40px;
     fill: #ef4444da;
+    transition: all 0.4s ease;
+}
+
+.icons:hover {
+    fill: red;
+    transform: scale(1.1);
 }
 
 /************/
