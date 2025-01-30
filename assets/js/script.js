@@ -19,15 +19,32 @@ let edits = document.querySelectorAll(".reads");
 // Library Data
 const myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.readStatus = function () {
+// function Book(title, author, pages, isRead) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.isRead = isRead;
+//     this.readStatus = function () {
+//         return this.isRead ? "Already read" : "Not yet read";
+//     };
+//     this.classForReadStatus = function () {
+//         return this.isRead ? "black" : "red";
+//     };
+// }
+
+class Book {
+    constructor(author, title, pages, isRead) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
+
+    readStatus = () => {
         return this.isRead ? "Already read" : "Not yet read";
     };
-    this.classForReadStatus = function () {
+
+    classForReadStatus = () => {
         return this.isRead ? "black" : "red";
     };
 }
