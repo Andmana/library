@@ -7,30 +7,22 @@ removeSvg.classList.remove('display');
 const show_dialog = document.getElementById('Add');
 const close_dialog = document.getElementById('close');
 const dialog = document.querySelector('dialog');
+const form = document.getElementById('form');
 const submit = document.getElementById('submit');
 // Modal Form
 const author = document.getElementById('author');
 const title = document.getElementById('title');
 const pages = document.getElementById('pages');
 const isRead = document.getElementById('read');
+
+const titleMsg = document.getElementById('titleMsg');
+const authorMsg = document.getElementById('authorMsg');
+const pagesMsg = document.getElementById('pagesMsg');
 // Cards Button
 let deletes = document.querySelectorAll('.deletes');
 let edits = document.querySelectorAll('.reads');
 // Library Data
 const myLibrary = [];
-
-// function Book(title, author, pages, isRead) {
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.isRead = isRead;
-//     this.readStatus = function () {
-//         return this.isRead ? "Already read" : "Not yet read";
-//     };
-//     this.classForReadStatus = function () {
-//         return this.isRead ? "black" : "red";
-//     };
-// }
 
 class Book {
   constructor(author, title, pages, isRead) {
@@ -79,17 +71,60 @@ function showLibrary() {
   attachEventListeners();
 }
 
-// Dialog M,odal controls
+// Dialog Modal controls
 show_dialog.addEventListener('click', () => dialog.showModal());
 close_dialog.addEventListener('click', (e) => {
   e.preventDefault();
   dialog.close();
 });
-submit.addEventListener('click', (e) => {
-  e.preventDefault();
+
+// Form action
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!title.validity.valid || !author.validity.valid || !pages.validity.valid) {
+    showErrorTitle();
+    showErrorAuthor();
+    showErrorPages();
+    return;
+  }
+
   addBookToLibrary();
   dialog.close();
 });
+
+// Input Event
+title.addEventListener('input', (event) => {
+  if (title.validity.valid) titleMsg.textContent = '';
+  else showErrorTitle();
+});
+
+author.addEventListener('input', (event) => {
+  if (author.validity.valid) authorMsg.textContent = '';
+  else showErrorAuthor();
+});
+
+pages.addEventListener('input', (event) => {
+  if (pages.validity.valid) pagesMsg.textContent = '';
+  else showErrorPages();
+});
+
+function showErrorTitle() {
+  if (title.validity.valueMissing) {
+    titleMsg.textContent = 'You need to enter book title';
+  }
+}
+
+function showErrorAuthor() {
+  if (author.validity.valueMissing) authorMsg.textContent = 'You need to enter Authors Name';
+  if (author.validity.tooShort)
+    authorMsg.textContent = `Name should be at least ${author.minLength} characters; you entered ${author.value.length}.`;
+}
+
+function showErrorPages() {
+  if (title.validity.valueMissing) {
+    titleMsg.textContent = 'You need to enter book title';
+  }
+}
 
 function attachEventListeners() {
   document.querySelectorAll('.deletes').forEach((btn) =>
@@ -108,6 +143,5 @@ function attachEventListeners() {
     })
   );
 }
-
 // Initialize
 document.addEventListener('DOMContentLoaded', showLibrary);

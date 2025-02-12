@@ -224,7 +224,7 @@ footer {
 dialog {
   animation: fade-out 0.7s ease-out;
   position: relative;
-  width: 30%;
+  width: 400px;
   margin: auto;
   padding: 20px 40px;
   border-radius: 30px;
@@ -259,6 +259,13 @@ label span {
   border-radius: 5px;
   background-color: #e0e0e091;
 }
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
 
 input[type='checkbox'] {
   width: 20px;
@@ -278,4 +285,10 @@ input[type='number'] {
   display: flex;
   justify-content: end;
   gap: 10px;
+}
+
+.error {
+  grid-column: 2 / 3;
+  color: red;
+  font-size: 0.8rem;
 }
