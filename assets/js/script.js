@@ -42,10 +42,10 @@ class Book {
 }
 
 // Add a default Book
-myLibrary.push(new Book('One Piece', 'Eichiro Oda', 1000, false));
+myLibrary.push(new Book('Eichiro Oda', 'One Piece', 1000, false));
 
 function addBookToLibrary() {
-  const book = new Book(title.value, author.value, pages.value, isRead.checked);
+  const book = new Book(author.value, title.value, pages.value, isRead.checked);
   myLibrary.push(book);
   showLibrary();
 }
